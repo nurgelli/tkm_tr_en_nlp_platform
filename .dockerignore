@@ -1,0 +1,14 @@
+.git
+.github
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+.env
+venv
+data/raw
+data/processed
+logs
+notebooks/.ipynb_checkpoints
+htmlcov
+.coverage

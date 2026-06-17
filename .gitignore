@@ -1,2 +1,16 @@
 *venv/
-*.md
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.joblib
+*.pkl
+data/raw/
+data/processed/
+logs/
+.DS_Store
+*.egg-info/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/

@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic-settings
+sentence-transformers
+scikit-learn
+pandas
+numpy
+joblib
+langdetect
+streamlit
+pytest
+requests
