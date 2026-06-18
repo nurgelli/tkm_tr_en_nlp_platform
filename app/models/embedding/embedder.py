@@ -1,7 +1,6 @@
 import time
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
 
 from app.core.config import settings
 from app.core.logger import get_logger
@@ -13,9 +12,11 @@ MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 _model = None
 
 
-def load_model() -> SentenceTransformer:
+def load_model():
     global _model
     if _model is None:
+        from sentence_transformers import SentenceTransformer
+
         logger.info(f"Loading embedding model: {MODEL_NAME}")
         _model = SentenceTransformer(
             MODEL_NAME, cache_folder=str(settings.model_dir / "sentence_transformers")

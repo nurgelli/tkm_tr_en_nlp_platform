@@ -5,6 +5,10 @@ __pycache__/
 .env
 *.joblib
 *.pkl
+*.npy
+app/models/**/index_metadata.csv
+app/models/**/metrics.json
+app/models/**/sentence_transformers/
 data/raw/
 data/processed/
 logs/
@@ -14,3 +18,4 @@ dist/
 .pytest_cache/
 .coverage
 htmlcov/
+pathway.*

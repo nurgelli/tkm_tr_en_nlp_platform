@@ -4,7 +4,6 @@ import pandas as pd
 from app.core.logger import get_logger
 from app.core.paths import EMBEDDING_MODEL_DIR
 from app.data_utils import SUPPORTED_LANGUAGE_CODES, normalize_corpus_schema
-from app.models.embedding.embedder import embed_single, embed_texts
 
 logger = get_logger(__name__)
 
@@ -13,6 +12,8 @@ METADATA_PATH = EMBEDDING_MODEL_DIR / "index_metadata.csv"
 
 
 def build_search_index(df: pd.DataFrame) -> dict:
+    from app.models.embedding.embedder import embed_texts
+
     df = normalize_corpus_schema(df)
     logger.info(f"Building search index for {len(df)} texts...")
 
@@ -30,6 +31,8 @@ def build_search_index(df: pd.DataFrame) -> dict:
 
 
 def cosine_search(query: str, top_k: int = 5, lang_filter: str = None) -> list:
+    from app.models.embedding.embedder import embed_single
+
     if not EMBEDDINGS_PATH.exists() or not METADATA_PATH.exists():
         raise FileNotFoundError(
             "Search index not found. Run scripts/build_embeddings.py first."

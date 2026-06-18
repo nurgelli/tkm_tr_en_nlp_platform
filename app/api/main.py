@@ -4,7 +4,6 @@ from fastapi import FastAPI
 
 from app.api.routes import classify, compare, languages, search
 from app.core.logger import get_logger
-from app.models.embedding.embedder import load_model
 
 logger = get_logger(__name__)
 
@@ -12,6 +11,8 @@ logger = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     try:
+        from app.models.embedding.embedder import load_model
+
         load_model()
         logger.info("Multilingual embedding model ready")
     except Exception as exc:

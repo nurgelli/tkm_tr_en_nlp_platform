@@ -12,3 +12,4 @@ logs
 notebooks/.ipynb_checkpoints
 htmlcov
 .coverage
+pathway*

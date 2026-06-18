@@ -1,7 +1,6 @@
 import joblib
 
 from app.core.paths import EMBEDDING_MODEL_DIR
-from app.models.embedding.embedder import embed_single
 
 MODEL_PATH = EMBEDDING_MODEL_DIR / "embedding_classifier.joblib"
 _embedding_classifier = None
@@ -19,6 +18,8 @@ def load_embedding_classifier():
 
 
 def predict_embedding(text: str):
+    from app.models.embedding.embedder import embed_single
+
     clf = load_embedding_classifier()
     vec, latency = embed_single(text)
     pred = clf.predict([vec])[0]
