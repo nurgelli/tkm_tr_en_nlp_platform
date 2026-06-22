@@ -1,13 +1,18 @@
+import os
 import time
 
 import numpy as np
+from dotenv import load_dotenv
 
-from app.core.config import settings
 from app.core.logger import get_logger
+
+load_dotenv()
 
 logger = get_logger(__name__)
 
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 _model = None
 
@@ -18,9 +23,7 @@ def load_model():
         from sentence_transformers import SentenceTransformer
 
         logger.info(f"Loading embedding model: {MODEL_NAME}")
-        _model = SentenceTransformer(
-            MODEL_NAME, cache_folder=str(settings.model_dir / "sentence_transformers")
-        )
+        _model = SentenceTransformer(MODEL_NAME, token=HF_TOKEN)
         logger.info("Embedding model loaded")
     return _model
 
